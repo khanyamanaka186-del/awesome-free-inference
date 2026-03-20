@@ -29,7 +29,6 @@
 - [Tier 4: Chat-Only (No API)](#tier-4-chat-only-no-api)
 - [Quick Comparison by Use Case](#quick-comparison-best-free-options-by-use-case)
 - [OpenAI-Compatible Endpoints](#openai-compatible-endpoints)
-- [LiteLLM Verified Free Models](#litellm-verified-free-models-0-input--0-output)
 - [LiteLLM Integration](#litellm-integration)
 - [Contributing](#contributing)
 
@@ -39,13 +38,16 @@
 
 ### Google AI Studio
 
-| Model | RPM | Daily Cap | Context | Features |
-|-------|-----|-----------|---------|----------|
-| Gemini 2.5 Pro | 5 | 100 req | 1M | Vision, function calling |
-| Gemini 2.5 Flash | 15 | 500 req | 1M | Vision, function calling |
-| Gemini 2.5 Flash-Lite | 15 | 1,000 req | 1M | Vision |
-| Gemini 2.0 Flash | 15 | 1,500 req | 1M | Vision, function calling |
-| Gemma 3 27B | 15 | — | 128K | Vision, function calling |
+| Model | LiteLLM ID | RPM | Daily Cap | Context | Max Output | Features |
+|-------|-----------|-----|-----------|---------|------------|----------|
+| Gemini 2.5 Pro | — | 5 | 100 req | 1M | 8K | Vision, function calling |
+| Gemini 2.5 Flash | — | 15 | 500 req | 1M | 8K | Vision, function calling |
+| Gemini 2.5 Flash-Lite | — | 15 | 1,000 req | 1M | 8K | Vision |
+| Gemini 2.0 Flash | — | 15 | 1,500 req | 1M | 8K | Vision, function calling |
+| Gemini Exp 1206 | `gemini/gemini-exp-1206` | — | — | 2M | 8K | Vision, function calling |
+| Gemini Exp 1114 | `gemini/gemini-exp-1114` | — | — | 1M | 8K | Vision, function calling |
+| Gemma 3 27B | `gemini/gemma-3-27b-it` | 15 | — | 131K | 8K | Vision, function calling |
+| LearnLM 1.5 Pro Exp | `gemini/learnlm-1.5-pro-experimental` | — | — | 32K | 8K | Vision, function calling |
 
 - **Sign-up:** [ai.google.dev](https://ai.google.dev) (Google account)
 - **OpenAI-compatible:** Yes
@@ -67,20 +69,23 @@
 
 ### OpenRouter
 
-| Model | Context | Max Output |
-|-------|---------|------------|
-| GPT-OSS 120B | 131K | 131K |
-| Qwen3 Coder 480B (MoE) | 262K | 262K |
-| NVIDIA Nemotron 3 Super 120B | 262K | 262K |
-| Llama 3.3 70B | 65K | — |
-| Hermes 3 Llama 3.1 405B | 131K | — |
-| DeepSeek R1/V3 | 128K | — |
-| Llama 4 Maverick/Scout | 128K+ | — |
-| MiniMax M2.5 | 196K | 196K |
-| Step 3.5 Flash | 256K | 256K |
-| Mistral Small 3.1 24B | 128K | — |
-| Gemma 3 (27B/12B/4B) | 32-131K | 8K |
-| 15+ more models | — | — |
+| Model | LiteLLM ID | Context | Max Output | Features |
+|-------|-----------|---------|------------|----------|
+| Auto Router | `openrouter/openrouter/auto` | 2M | — | Vision, function calling |
+| Free Router | `openrouter/openrouter/free` | 200K | — | Vision, function calling |
+| Bodybuilder | `openrouter/openrouter/bodybuilder` | 128K | — | — |
+| GPT-OSS 120B | — | 131K | 131K | — |
+| Qwen3 Coder 480B (MoE) | — | 262K | 262K | — |
+| NVIDIA Nemotron 3 Super 120B | — | 262K | 262K | — |
+| Llama 3.3 70B | — | 65K | — | — |
+| Hermes 3 Llama 3.1 405B | — | 131K | — | — |
+| DeepSeek R1/V3 | — | 128K | — | — |
+| Llama 4 Maverick/Scout | — | 128K+ | — | — |
+| MiniMax M2.5 | — | 196K | 196K | — |
+| Step 3.5 Flash | — | 256K | 256K | — |
+| Mistral Small 3.1 24B | — | 128K | — | — |
+| Gemma 3 (27B/12B/4B) | — | 32-131K | 8K | — |
+| 15+ more models | — | — | — | — |
 
 - **Sign-up:** [openrouter.ai](https://openrouter.ai)
 - **Rate limits:** ~20 RPM, 50 req/day (free), 1,000 req/day (with $10+ balance)
@@ -102,58 +107,15 @@
 
 ### Mistral AI
 
-| Model | RPM | Monthly Cap |
-|-------|-----|-------------|
-| Mistral Large | 2 | 1B tokens |
-| Mistral Small | 2 | 1B tokens |
-| Codestral | 2 | 1B tokens |
-| Pixtral 12B | 2 | 1B tokens |
+| Model | LiteLLM ID | RPM | Monthly Cap | Context |
+|-------|-----------|-----|-------------|---------|
+| Mistral Large | — | 2 | 1B tokens | — |
+| Mistral Small | — | 2 | 1B tokens | — |
+| Codestral | `codestral/codestral-latest` | 2 | 1B tokens | 32K |
+| Pixtral 12B | — | 2 | 1B tokens | — |
 
 - **Sign-up:** [console.mistral.ai](https://console.mistral.ai)
 - **Highlight:** Codestral is specifically free for code generation tasks
-
-### Cloudflare Workers AI
-
-| Model | Daily Cap |
-|-------|-----------|
-| Llama 3.2 | 10K neurons |
-| Mistral 7B | 10K neurons |
-| FLUX.2 (image gen) | 10K neurons |
-| Whisper (speech-to-text) | 10K neurons |
-
-- **Sign-up:** [dash.cloudflare.com](https://dash.cloudflare.com)
-- **Highlight:** Edge deployment with global low-latency
-
-### GitHub Models
-
-| Model | RPM | Daily Cap | Token Limits |
-|-------|-----|-----------|--------------|
-| GPT-4o | 10 | 50 req | 8K in / 4K out |
-| GPT-4.1 | 10 | 50 req | 8K in / 4K out |
-| o3 | 10 | 50 req | 8K in / 4K out |
-| Grok-3 | 10 | 50 req | 8K in / 4K out |
-| DeepSeek-R1 | 10 | 50 req | 8K in / 4K out |
-
-- **Sign-up:** [github.com/marketplace/models](https://github.com/marketplace/models) (GitHub account)
-- **Highlight:** Playground UI included, access to proprietary models for free
-
-### Cohere
-
-| Model | Monthly Cap | RPM |
-|-------|-------------|-----|
-| Command R+ | 1,000 req | 20 |
-| Embed 4 | 1,000 req | 20 |
-| Rerank 3.5 | 1,000 req | 20 |
-
-- **Sign-up:** [dashboard.cohere.com](https://dashboard.cohere.com)
-- **Highlight:** Full RAG pipeline (generation + embedding + reranking)
-
-### HuggingFace Inference API
-
-- **Models:** 300+ community-hosted models (up to ~10B params on free tier)
-- **Limits:** Variable, cold-start delays possible (30+ sec)
-- **Sign-up:** [huggingface.co](https://huggingface.co)
-- **Highlight:** Long-tail/specialized model access
 
 ### NVIDIA NIM
 
@@ -226,6 +188,121 @@
 - **Rate limits:** ~40 RPM
 - **Highlight:** 94 free endpoints + self-hosted Docker containers via NIM microservices
 
+### Cloudflare Workers AI
+
+| Model | Daily Cap |
+|-------|-----------|
+| Llama 3.2 | 10K neurons |
+| Mistral 7B | 10K neurons |
+| FLUX.2 (image gen) | 10K neurons |
+| Whisper (speech-to-text) | 10K neurons |
+
+- **Sign-up:** [dash.cloudflare.com](https://dash.cloudflare.com)
+- **Highlight:** Edge deployment with global low-latency
+
+### GitHub Models
+
+| Model | RPM | Daily Cap | Token Limits |
+|-------|-----|-----------|--------------|
+| GPT-4o | 10 | 50 req | 8K in / 4K out |
+| GPT-4.1 | 10 | 50 req | 8K in / 4K out |
+| o3 | 10 | 50 req | 8K in / 4K out |
+| Grok-3 | 10 | 50 req | 8K in / 4K out |
+| DeepSeek-R1 | 10 | 50 req | 8K in / 4K out |
+
+- **Sign-up:** [github.com/marketplace/models](https://github.com/marketplace/models) (GitHub account)
+- **Highlight:** Playground UI included, access to proprietary models for free
+
+### Cohere
+
+| Model | Monthly Cap | RPM |
+|-------|-------------|-----|
+| Command R+ | 1,000 req | 20 |
+| Embed 4 | 1,000 req | 20 |
+| Rerank 3.5 | 1,000 req | 20 |
+
+- **Sign-up:** [dashboard.cohere.com](https://dashboard.cohere.com)
+- **Highlight:** Full RAG pipeline (generation + embedding + reranking)
+
+### HuggingFace Inference API
+
+- **Models:** 300+ community-hosted models (up to ~10B params on free tier)
+- **Limits:** Variable, cold-start delays possible (30+ sec)
+- **Sign-up:** [huggingface.co](https://huggingface.co)
+- **Highlight:** Long-tail/specialized model access
+
+### Volcengine (ByteDance)
+
+| Model | LiteLLM ID | Context | Max Output | Function Calling |
+|-------|-----------|---------|------------|-----------------|
+| DeepSeek V3 | `deepseek-v3-2-251201` | 98K | 32K | Yes |
+| GLM-4 | `glm-4-7-251222` | 204K | 131K | Yes |
+| Kimi K2 Thinking | `kimi-k2-thinking-251104` | 229K | 32K | Yes |
+
+- **Sign-up:** ByteDance Volcengine platform
+- **Highlight:** DeepSeek V3, GLM-4, and Kimi K2 all free — strong reasoning models
+
+### Vertex AI (Google Cloud)
+
+| Model | LiteLLM ID | Context | Max Output | Vision |
+|-------|-----------|---------|------------|--------|
+| Llama 3 405B | `vertex_ai/meta/llama3-405b-instruct-maas` | 32K | 32K | — |
+| Llama 3.2 90B Vision | `vertex_ai/meta/llama-3.2-90b-vision-instruct-maas` | 128K | 2K | Yes |
+| Llama 3.1 70B | `vertex_ai/meta/llama-3.1-70b-instruct-maas` | 128K | 2K | Yes |
+| Llama 3.1 8B | `vertex_ai/meta/llama-3.1-8b-instruct-maas` | 128K | 2K | Yes |
+| Llama 3 70B | `vertex_ai/meta/llama3-70b-instruct-maas` | 32K | 32K | — |
+| Llama 3 8B | `vertex_ai/meta/llama3-8b-instruct-maas` | 32K | 32K | — |
+
+- **Sign-up:** Google Cloud account with Vertex AI enabled
+- **Highlight:** Free during MaaS (Model-as-a-Service) preview period
+
+### GigaChat (Sber)
+
+| Model | LiteLLM ID | Context | Max Output | Vision | Function Calling |
+|-------|-----------|---------|------------|--------|-----------------|
+| GigaChat 2 Max | `gigachat/GigaChat-2-Max` | 128K | 8K | Yes | Yes |
+| GigaChat 2 Pro | `gigachat/GigaChat-2-Pro` | 128K | 8K | Yes | Yes |
+| GigaChat 2 Lite | `gigachat/GigaChat-2-Lite` | 128K | 8K | — | Yes |
+
+- **Sign-up:** Sber account (Russian-focused service)
+
+### PublicAI
+
+| Model | LiteLLM ID | Context | Max Output | Function Calling |
+|-------|-----------|---------|------------|-----------------|
+| OLMo 3 32B Think | `publicai/allenai/Olmo-3-32B-Think` | 32K | 4K | Yes |
+| Qwen SEA-LION v4 32B | `publicai/aisingapore/Qwen-SEA-LION-v4-32B-IT` | 32K | 4K | Yes |
+| OLMo 3 7B Think | `publicai/allenai/Olmo-3-7B-Think` | 32K | 4K | Yes |
+| OLMo 3 7B Instruct | `publicai/allenai/Olmo-3-7B-Instruct` | 32K | 4K | Yes |
+| ALIA 40B Instruct | `publicai/BSC-LT/ALIA-40b-instruct_Q8_0` | 8K | 4K | Yes |
+| Apertus 70B | `publicai/swiss-ai/apertus-70b-instruct` | 8K | 4K | — |
+| + 3 more models | | | | |
+
+- **Highlight:** European/research-focused open models
+
+### ZAI
+
+| Model | LiteLLM ID | Context | Max Output | Function Calling |
+|-------|-----------|---------|------------|-----------------|
+| GLM-4.5 Flash | `zai/glm-4.5-flash` | 128K | 32K | Yes |
+
+### Sarvam
+
+| Model | LiteLLM ID | Context | Max Output |
+|-------|-----------|---------|------------|
+| Sarvam-M | `sarvam/sarvam-m` | 8K | 32K |
+
+- **Highlight:** India-focused multilingual model
+
+### Together AI
+
+| Model | LiteLLM ID | Function Calling |
+|-------|-----------|-----------------|
+| Llama 3.3 70B Instruct Turbo | `together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo-Free` | Yes |
+
+- **Sign-up:** [api.together.ai](https://api.together.ai)
+- **OpenAI-compatible:** Yes
+
 ---
 
 ## Tier 2: Free Credits / Trial (May Require Card)
@@ -247,24 +324,36 @@
 
 ### Ollama
 
-Run models locally with zero API costs.
+Run models locally with zero API costs. All models verified $0 in [LiteLLM pricing](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json).
 
-| Model | RAM Required |
-|-------|-------------|
-| DeepSeek V3.1 671B | 384GB+ |
-| Qwen3 Coder 480B | 256GB+ |
-| GPT-OSS 120B | 80GB+ |
-| Llama 3.3 70B | 48GB |
-| Qwen 2.5 72B | 48GB |
-| Mistral Small 3.1 | 16GB |
-| Phi-4 | 12GB |
-| Gemma 2 9B | 8GB |
+| Model | LiteLLM ID | Context | Max Output | RAM Required |
+|-------|-----------|---------|------------|-------------|
+| DeepSeek V3.1 671B | `ollama/deepseek-v3.1:671b-cloud` | 163K | 163K | 384GB+ |
+| Qwen3 Coder 480B | `ollama/qwen3-coder:480b-cloud` | 262K | 262K | 256GB+ |
+| GPT-OSS 120B | `ollama/gpt-oss:120b-cloud` | 131K | 131K | 80GB+ |
+| Mixtral 8x22B | `ollama/mixtral-8x22B-Instruct-v0.1` | 65K | 65K | 80GB+ |
+| Mistral Large | `ollama/mistral-large-instruct-2407` | 65K | 8K | 70GB+ |
+| Llama 3.3 70B | — | 8K | 8K | 48GB |
+| Qwen 2.5 72B | — | — | — | 48GB |
+| Llama 3.1 | `ollama/llama3.1` | 8K | 8K | 8GB |
+| Mistral Small 3.1 | — | — | — | 16GB |
+| Phi-4 | — | — | — | 12GB |
+| Gemma 2 9B | — | — | — | 8GB |
+| + 18 more models | | | | |
 
 - **Install:** [ollama.com](https://ollama.com)
 
 ### Lemonade (Edge / On-Device)
 
-GGUF-quantized models for edge inference: Gemma 3 4B, Qwen3 4B, Qwen3 Coder 30B (MoE), GPT-OSS 20B.
+GGUF-quantized models for edge inference, verified $0 in LiteLLM:
+
+| Model | LiteLLM ID | Context | Max Output |
+|-------|-----------|---------|------------|
+| Qwen3 Coder 30B (MoE) | `lemonade/Qwen3-Coder-30B-A3B-Instruct-GGUF` | 262K | 32K |
+| GPT-OSS 120B | `lemonade/gpt-oss-120b-mxfp-GGUF` | 131K | 32K |
+| Qwen3 4B | `lemonade/Qwen3-4B-Instruct-2507-GGUF` | 262K | 32K |
+| GPT-OSS 20B | `lemonade/gpt-oss-20b-mxfp4-GGUF` | 131K | 32K |
+| Gemma 3 4B | `lemonade/Gemma-3-4b-it-GGUF` | 128K | 8K |
 
 ---
 
@@ -287,7 +376,8 @@ GGUF-quantized models for edge inference: Gemma 3 4B, Qwen3 4B, Qwen3 Coder 30B 
 | **Largest context window** | Google AI Studio (1M), xAI Grok (2M) | Unmatched context for long documents |
 | **Fastest inference** | Groq, Cerebras | Custom silicon, 500+ tok/s |
 | **Most model variety** | OpenRouter (27+ free models) | One API key, many providers |
-| **Code generation** | Mistral Codestral, Qwen3 Coder (OpenRouter) | Purpose-built for code |
+| **Biggest free models** | NVIDIA NIM (Mistral 675B, DeepSeek 685B) | Massive models, zero cost |
+| **Code generation** | Mistral Codestral, Qwen3 Coder (OpenRouter/NIM) | Purpose-built for code |
 | **RAG pipelines** | Cohere (gen + embed + rerank) | Full pipeline in one provider |
 | **Highest daily volume** | Cloudflare Workers AI (10K/day) | Best for high-throughput prototyping |
 | **Proprietary models for free** | GitHub Models (GPT-4.1, o3, Grok-3) | Access to closed-source models |
@@ -327,68 +417,9 @@ response = client.chat.completions.create(
 
 ---
 
-## LiteLLM Verified Free Models ($0 Input / $0 Output)
-
-> Data from [`model_prices_and_context_window.json`](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json) — 81 free chat/completion models across 16 providers.
-
-### Cloud API Providers
-
-| Provider | Model (LiteLLM ID) | Context | Max Output | Vision | Function Calling |
-|----------|---------------------|---------|------------|--------|-----------------|
-| **Gemini** | `gemini/gemini-exp-1206` | 2M | 8K | Yes | Yes |
-| | `gemini/gemini-exp-1114` | 1M | 8K | Yes | Yes |
-| | `gemini/gemma-3-27b-it` | 131K | 8K | Yes | Yes |
-| | `gemini/learnlm-1.5-pro-experimental` | 32K | 8K | Yes | Yes |
-| **Codestral** | `codestral/codestral-2405` | 32K | 8K | — | — |
-| | `codestral/codestral-latest` | 32K | 8K | — | — |
-| **OpenRouter** | `openrouter/openrouter/auto` | 2M | — | Yes | Yes |
-| | `openrouter/openrouter/free` | 200K | — | Yes | Yes |
-| | `openrouter/openrouter/bodybuilder` | 128K | — | — | — |
-| **Together AI** | `together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo-Free` | — | — | — | Yes |
-| **Vertex AI** | `vertex_ai/meta/llama3-405b-instruct-maas` | 32K | 32K | — | — |
-| | `vertex_ai/meta/llama-3.2-90b-vision-instruct-maas` | 128K | 2K | Yes | — |
-| | `vertex_ai/meta/llama-3.1-70b-instruct-maas` | 128K | 2K | Yes | — |
-| | `vertex_ai/meta/llama-3.1-8b-instruct-maas` | 128K | 2K | Yes | — |
-| | `vertex_ai/meta/llama3-70b-instruct-maas` | 32K | 32K | — | — |
-| | `vertex_ai/meta/llama3-8b-instruct-maas` | 32K | 32K | — | — |
-| **Volcengine** | `deepseek-v3-2-251201` | 98K | 32K | — | Yes |
-| | `glm-4-7-251222` | 204K | 131K | — | Yes |
-| | `kimi-k2-thinking-251104` | 229K | 32K | — | Yes |
-| **GigaChat** | `gigachat/GigaChat-2-Max` | 128K | 8K | Yes | Yes |
-| | `gigachat/GigaChat-2-Pro` | 128K | 8K | Yes | Yes |
-| | `gigachat/GigaChat-2-Lite` | 128K | 8K | — | Yes |
-| **PublicAI** | `publicai/allenai/Olmo-3-32B-Think` | 32K | 4K | — | Yes |
-| | `publicai/aisingapore/Qwen-SEA-LION-v4-32B-IT` | 32K | 4K | — | Yes |
-| | `publicai/allenai/Olmo-3-7B-Think` | 32K | 4K | — | Yes |
-| | `publicai/allenai/Olmo-3-7B-Instruct` | 32K | 4K | — | Yes |
-| | `publicai/BSC-LT/ALIA-40b-instruct_Q8_0` | 8K | 4K | — | Yes |
-| | `publicai/swiss-ai/apertus-70b-instruct` | 8K | 4K | — | — |
-| | + 3 more models | | | | |
-| **ZAI** | `zai/glm-4.5-flash` | 128K | 32K | — | Yes |
-| **Sarvam** | `sarvam/sarvam-m` | 8K | 32K | — | — |
-
-### Self-Hosted / Edge (Always $0)
-
-| Provider | Model (LiteLLM ID) | Context | Max Output |
-|----------|---------------------|---------|------------|
-| **Ollama** | `ollama/deepseek-v3.1:671b-cloud` | 163K | 163K |
-| | `ollama/qwen3-coder:480b-cloud` | 262K | 262K |
-| | `ollama/gpt-oss:120b-cloud` | 131K | 131K |
-| | `ollama/mixtral-8x22B-Instruct-v0.1` | 65K | 65K |
-| | `ollama/mistral-large-instruct-2407` | 65K | 8K |
-| | `ollama/llama3.1` | 8K | 8K |
-| | + 23 more models | | |
-| **Lemonade** | `lemonade/Qwen3-Coder-30B-A3B-Instruct-GGUF` | 262K | 32K |
-| | `lemonade/gpt-oss-120b-mxfp-GGUF` | 131K | 32K |
-| | `lemonade/Qwen3-4B-Instruct-2507-GGUF` | 262K | 32K |
-| | `lemonade/gpt-oss-20b-mxfp4-GGUF` | 131K | 32K |
-| | `lemonade/Gemma-3-4b-it-GGUF` | 128K | 8K |
-
----
-
 ## LiteLLM Integration
 
-Use [LiteLLM](https://github.com/BerriAI/litellm) as a unified proxy to route across all these providers with a single interface:
+Use [LiteLLM](https://github.com/BerriAI/litellm) as a unified proxy to route across all providers with a single interface. All models with a `LiteLLM ID` column in the tables above are ready to use:
 
 ```python
 import litellm
@@ -410,7 +441,15 @@ response = litellm.completion(model="vertex_ai/meta/llama3-405b-instruct-maas", 
 
 # Codestral (free for code)
 response = litellm.completion(model="codestral/codestral-latest", messages=[...])
+
+# GigaChat (free)
+response = litellm.completion(model="gigachat/GigaChat-2-Max", messages=[...])
+
+# Ollama (self-hosted, free)
+response = litellm.completion(model="ollama/llama3.1", messages=[...])
 ```
+
+> 81 models verified at $0 input / $0 output from [`model_prices_and_context_window.json`](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json)
 
 ---
 
