@@ -58,6 +58,8 @@
 | Gemma 3 2B | 30 | 15K | 14.4K |
 | Gemma 3 1B | 30 | 15K | 14.4K |
 
+Also available: FunctionGemma, ShieldGemma (0.6B) — tool calling and safety variants.
+
 **TTS, Audio, Embeddings & Other (Free)**
 
 | Model | RPM | TPM | RPD |
@@ -78,7 +80,7 @@
 - **Sign-up:** [ai.google.dev](https://ai.google.dev) (Google account)
 - **OpenAI-compatible:** Yes
 - **Multimodal:** Yes (text, audio, TTS, embeddings)
-- **Highlight:** Most generous free tier — flagship Gemini 2.5 Pro at 50K RPD, plus TTS, embeddings, live audio, and search/map grounding all free
+- **Highlight:** Most generous free tier — Gemini 2.5 Pro/Flash, TTS, embeddings, live audio, and search/map grounding all free. Limits shown are from AI Studio dashboard (Google does not publish free tier limits in docs).
 
 ### Groq
 
