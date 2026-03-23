@@ -5,14 +5,16 @@
 <h1 align="center">Awesome Free Inference</h1>
 
 <p align="center">
-  A comprehensive guide to free AI/LLM inference APIs — no credit card required, no expiry.
+  The most comprehensive, verified guide to free AI/LLM inference APIs.<br>
+  No credit card required · No expiry · Rate limits verified · Code examples included
 </p>
 
 <p align="center">
+  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/last%20updated-March%202026-brightgreen" alt="Last Updated">
-  <img src="https://img.shields.io/badge/free%20models-81%2B-orange" alt="Free Models">
-  <img src="https://img.shields.io/badge/providers-20%2B-purple" alt="Providers">
+  <img src="https://img.shields.io/badge/last%20verified-March%202026-brightgreen" alt="Last Verified">
+  <img src="https://img.shields.io/badge/free%20models-100%2B-orange" alt="Free Models">
+  <img src="https://img.shields.io/badge/providers-25%2B-purple" alt="Providers">
 </p>
 
 <p align="center">
@@ -332,12 +334,47 @@ Also available: FunctionGemma, ShieldGemma (0.6B) — tool calling and safety va
 - **Sign-up:** [api.together.ai](https://api.together.ai)
 - **OpenAI-compatible:** Yes
 
+### LLM7.io
+
+| Model | Vision | Tool Calling | Context |
+|-------|--------|-------------|---------|
+| GPT-OSS 20B | — | Yes | — |
+| Codestral Latest | — | Yes | 32K |
+| GLM-4.6V-Flash | Yes | Yes | — |
+
+- **Sign-up:** No signup required. Get a free token at [token.llm7.io](https://token.llm7.io) for higher limits.
+- **Rate limits:** 2 req/s, 20 RPM, 100 req/hr (with free token)
+- **OpenAI-compatible:** Yes — `https://api.llm7.io/v1`
+- **Highlight:** Zero-friction entry — works without any API key (`api_key="unused"`)
+
+### Ollama Cloud
+
+| Model | Size | Type |
+|-------|------|------|
+| DeepSeek V3.2 (685B) | 641 GB | Text |
+| Kimi K2.5 (1T) | 1,042 GB | Text |
+| Mistral Large 3 (675B) | 635 GB | Text |
+| Qwen3 Coder 480B | 475 GB | Code |
+| Qwen3.5 397B | 370 GB | Text |
+| Nemotron 3 Super 120B | 215 GB | Text |
+| GLM-5 | 704 GB | Text |
+| GPT-OSS 120B | 61 GB | Text |
+| Devstral 2 123B | 119 GB | Code |
+| + 25 more cloud models | | |
+
+- **Sign-up:** [ollama.com](https://ollama.com) (run `ollama signin` in CLI)
+- **Rate limits:** GPU-time based (not token-based). 1 concurrent model, session resets every 5h, weekly resets every 7 days.
+- **OpenAI-compatible:** Yes — `https://ollama.com/v1/`
+- **API key:** [ollama.com/settings/keys](https://ollama.com/settings/keys)
+- **Highlight:** Run massive models (up to 1T params) in the cloud with the same Ollama CLI you use locally. Privacy-first — prompts are never logged or trained on.
+
 ---
 
 ## Tier 2: Free Credits / Trial (May Require Card)
 
 | Provider | Models | Free Credits | Card Required | Validity |
 |----------|--------|-------------|---------------|----------|
+| **Kluster AI** | DeepSeek R1, Llama 4 Maverick/Scout, Qwen3 235B +10 more | $5 | No | — |
 | **xAI** | Grok 4, Grok 4.1 Fast (2M ctx) | $25 | No (initially) | — |
 | **DeepSeek** | V3, R1 | 5M tokens | No | 30 days |
 | **SambaNova** | Llama 3.3 70B, 3.1 405B, Qwen 2.5 72B | $5 + free tier after | No | 30 days (credits) |
@@ -410,6 +447,8 @@ GGUF-quantized models for edge inference, verified $0 in LiteLLM:
 | **RAG pipelines** | Cohere (gen + embed + rerank) | Full pipeline in one provider |
 | **Highest daily volume** | Cloudflare Workers AI (10K/day) | Best for high-throughput prototyping |
 | **Proprietary models for free** | GitHub Models (GPT-4.1, o3, Grok-3) | Access to closed-source models |
+| **Biggest cloud models** | Ollama Cloud (Kimi K2.5 1T, DeepSeek 685B) | Trillion-param models, free GPU time |
+| **Zero-friction start** | LLM7.io | No signup, no API key needed |
 | **Privacy / offline** | Ollama (self-hosted) | Data never leaves your machine |
 | **Production-grade free** | Google AI Studio | Most generous limits + best models |
 
@@ -443,6 +482,9 @@ response = client.chat.completions.create(
 | Together AI | `https://api.together.xyz/v1` |
 | Fireworks AI | `https://api.fireworks.ai/inference/v1` |
 | NVIDIA NIM | `https://integrate.api.nvidia.com/v1` |
+| LLM7.io | `https://api.llm7.io/v1` |
+| Ollama Cloud | `https://ollama.com/v1/` |
+| Kluster AI | `https://api.kluster.ai/v1` |
 
 ---
 
@@ -474,17 +516,30 @@ response = litellm.completion(model="codestral/codestral-latest", messages=[...]
 # GigaChat (free)
 response = litellm.completion(model="gigachat/GigaChat-2-Max", messages=[...])
 
-# Ollama (self-hosted, free)
+# Ollama local (self-hosted, free)
 response = litellm.completion(model="ollama/llama3.1", messages=[...])
+
+# Ollama Cloud (free tier)
+response = litellm.completion(model="ollama/deepseek-v3.2", messages=[...], api_base="https://ollama.com")
 ```
 
-> 81 models verified at $0 input / $0 output from [`model_prices_and_context_window.json`](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json)
+> 100+ models verified at $0 input / $0 output from [`model_prices_and_context_window.json`](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json)
 
 ---
 
 ## Contributing
 
 Found a new free provider or spotted outdated info? Open an issue or PR.
+
+**What counts as "free":**
+- Permanent free tiers with no expiry (Tier 1)
+- Free credits / trials are listed separately (Tier 2)
+- Must offer a REST API — chat-only UIs go in Tier 4
+- Include: provider name, models, rate limits (with source link), sign-up URL
+
+**What doesn't count:**
+- Time-limited promotions or one-off giveaways
+- Waitlist-only / invite-only access
 
 ## License
 
